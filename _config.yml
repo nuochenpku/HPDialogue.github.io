@@ -38,7 +38,8 @@ plugins:
 author:
   name: Nuo Chen
   url: https://nuochenpku.github.io/
-
+gems:
+  - jekyll-paginate
 markdown: kramdown
 # Exclude from processing.
 # The following items will not be processed, by default.
