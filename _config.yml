@@ -1,0 +1,18 @@
+# Setup
+title:        LaMP
+tagline:      When Large Language Models Meet Personalization
+baseurl:      ""
+paginate:     1
+locale:       "en"
+
+# About/contact
+author:
+  name:       Alireza Salemi
+  url:        https://alirezasalemi7.github.io/ 
+
+# Gems
+gems:
+  - jekyll-paginate
+
+#Others
+markdown: kramdown

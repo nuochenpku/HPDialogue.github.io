@@ -1,0 +1,105 @@
+- link: "https://arxiv.org/abs/2304.11406"
+  task1_name: FlanT5-base-finetuned + Contriever
+  task1_score_acc: 0.734
+  task2_name: FlanT5-base-finetuned + Contriever
+  task2_score_acc: 0.763
+  task2_score_f1: 0.614
+  task3_name: FlanT5-base-finetuned + Contriever
+  task3_score_mae: 0.245
+  task3_score_rmse: 0.560
+  task4_name: FlanT5-base-finetuned + Contriever
+  task4_score_r1: 0.186
+  task4_score_rl: 0.171
+  task5_name: FlanT5-base-finetuned + BM25
+  task5_score_r1: 0.450
+  task5_score_rl: 0.409
+  task6_name: FlanT5-base-finetuned + BM25
+  task6_score_r1: 0.587
+  task6_score_rl: 0.575
+  task7_name: FlanT5-base-finetuned + Contriever
+  task7_score_r1: 0.528
+  task7_score_rl: 0.475
+- link: "https://arxiv.org/abs/2304.11406"
+  task1_name: FlanT5-XXL-zeroshot + Contriever
+  task1_score_acc: 0.699
+  task2_name: FlanT5-XXL-zeroshot + Contriever
+  task2_score_acc: 0.617
+  task2_score_f1: 0.512
+  task3_name: FlanT5-XXL-zeroshot + Contriever
+  task3_score_mae: 0.267
+  task3_score_rmse: 0.552
+  task4_name: FlanT5-XXL-zeroshot + Contriever
+  task4_score_r1: 0.182
+  task4_score_rl: 0.167
+  task5_name: FlanT5-XXL-zeroshot + BM25
+  task5_score_r1: 0.450
+  task5_score_rl: 0.411
+  task6_name: FlanT5-XXL-zeroshot + BM25
+  task6_score_r1: 0.482
+  task6_score_rl: 0.471
+  task7_name: FlanT5-XXL-zeroshot + Contriever
+  task7_score_r1: 0.448
+  task7_score_rl: 0.394
+- link: "https://arxiv.org/abs/2304.11406"
+  task1_name: GPT-3.5-zeroshot + Contriever
+  task1_score_acc: 0.695
+  task2_name: GPT-3.5-zeroshot + Contriever
+  task2_score_acc: 0.643
+  task2_score_f1: 0.563
+  task3_name: GPT-3.5-zeroshot + Contriever
+  task3_score_mae: 0.620
+  task3_score_rmse: 1.049
+  task4_name: GPT-3.5-zeroshot + Contriever
+  task4_score_r1: 0.150
+  task4_score_rl: 0.133
+  task5_name: GPT-3.5-zeroshot + BM25
+  task5_score_r1: 0.390
+  task5_score_rl: 0.329
+  task6_name: GPT-3.5-zeroshot + BM25
+  task6_score_r1: 0.000
+  task6_score_rl: 0.000
+  task7_name: GPT-3.5-zeroshot + Contriever
+  task7_score_r1: 0.390
+  task7_score_rl: 0.322
+- link: "https://arxiv.org/abs/2304.11406"
+  task1_name: GPT-3.5-zeroshot
+  task1_score_acc: 0.541
+  task2_name: GPT-3.5-zeroshot
+  task2_score_acc: 0.594
+  task2_score_f1: 0.488
+  task3_name: GPT-3.5-zeroshot
+  task3_score_mae: 0.706
+  task3_score_rmse: 0.972
+  task4_name: GPT-3.5-zeroshot
+  task4_score_r1: 0.136
+  task4_score_rl: 0.119
+  task5_name: GPT-3.5-zeroshot
+  task5_score_r1: 0.387
+  task5_score_rl: 0.329
+  task6_name: GPT-3.5-zeroshot
+  task6_score_r1: 0.000
+  task6_score_rl: 0.000
+  task7_name: GPT-3.5-zeroshot
+  task7_score_r1: 0.399
+  task7_score_rl: 0.336
+- link: "https://arxiv.org/abs/2304.11406"
+  task1_name: FlanT5-XXL-zeroshot
+  task1_score_acc: 0.520
+  task2_name: FlanT5-XXL-zeroshot
+  task2_score_acc: 0.581
+  task2_score_f1: 0.475
+  task3_name: FlanT5-XXL-zeroshot
+  task3_score_mae: 0.344
+  task3_score_rmse: 0.650
+  task4_name: FlanT5-XXL-zeroshot
+  task4_score_r1: 0.163
+  task4_score_rl: 0.147
+  task5_name: FlanT5-XXL-zeroshot
+  task5_score_r1: 0.442
+  task5_score_rl: 0.400
+  task6_name: FlanT5-XXL-zeroshot
+  task6_score_r1: 0.362
+  task6_score_rl: 0.343
+  task7_name: FlanT5-XXL-zeroshot
+  task7_score_r1: 0.453
+  task7_score_rl: 0.395

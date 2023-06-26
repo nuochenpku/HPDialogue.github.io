@@ -1,0 +1,156 @@
+---
+layout: default
+title: {{ site.name }}
+permalink: leaderboard
+---
+
+<p>
+    Welcome to the LaMP benchmark leaderboard! To assess your results on the test set or submit your model for inclusion on the leaderboard, please fill <a href="https://docs.google.com/forms/d/e/1FAIpQLSeXdGOvbiMwKB55T0jAJqskspKBlcsqSq_bCmRsvPc74Fy70A/viewform?usp=sf_link">this</a> form.
+</p>
+<p>
+  <strong>These are the results for the user-based separation setting. The results for the time-based setting will be added soon!</strong>
+</p>
+<div style="align-items: center">
+<table id="leaderboard-table" style="display: inline-table;">
+    <thead>
+      <div>
+        <label for="column-select">Task:</label>
+        <select id="column-select" onchange="changeColumn()">
+          <option value="1" selected>LaMP 1: Personalized Citation Identification</option>
+          <option value="2">LaMP 2: Personalized News Categorization</option>
+          <option value="3">LaMP 3: Personalized Product Rating</option>
+          <option value="4">LaMP 4: Personalized News Headline Generation</option>
+          <option value="5">LaMP 5: Personalized Scholarly Title Generation</option>
+          <option value="6">LaMP 6: Personalized Email Subject Generation</option>
+          <option value="7">LaMP 7: Personalized Tweet Paraphrasing</option>
+        </select>
+      </div>
+      <br>
+      <tr style="background-color:rgb(206, 200, 213);">
+        <th data-type="string" rowspan="1">Name</th>
+        <th data-type="number" onclick="sortTable(1, false)" data-column="1" class="leader-board-header">&#8597;Accuracy</th>
+        <th data-type="number" onclick="sortTable(3, false)" data-column="2" class="leader-board-header">&#8597;Accuracy</th>
+        <th data-type="number" onclick="sortTable(4, false)" data-column="2" class="leader-board-header">&#8597;F1</th>
+        <th data-type="number" onclick="sortTable(6, true)" data-column="3" class="leader-board-header">&#8597;MAE</th>
+        <th data-type="number" onclick="sortTable(7, true)" data-column="3" class="leader-board-header">&#8597;RMSE</th>
+        <th data-type="number" onclick="sortTable(9, false)" data-column="4" class="leader-board-header">&#8597;Rouge-1</th>
+        <th data-type="number" onclick="sortTable(10, false)" data-column="4" class="leader-board-header">&#8597;Rouge-L</th>
+        <th data-type="number" onclick="sortTable(12, false)" data-column="5" class="leader-board-header">&#8597;Rouge-1</th>
+        <th data-type="number" onclick="sortTable(13, false)" data-column="5" class="leader-board-header">&#8597;Rouge-L</th>
+        <th data-type="number" onclick="sortTable(15, false)" data-column="6" class="leader-board-header">&#8597;Rouge-1</th>
+        <th data-type="number" onclick="sortTable(16, false)" data-column="6" class="leader-board-header">&#8597;Rouge-L</th>
+        <th data-type="number" onclick="sortTable(18, false)" data-column="7" class="leader-board-header">&#8597;Rouge-1</th>
+        <th data-type="number" onclick="sortTable(19, false)" data-column="7" class="leader-board-header">&#8597;Rouge-L</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for player in site.data.leaderboard %}
+        <tr>
+          <td data-column="1"><a href="{{ player.link }}">{{ player.task1_name }}</a></td>
+          <td data-column="1">{{ player.task1_score_acc }}</td>
+          <td data-column="2"><a href="{{ player.link }}">{{ player.task2_name }}</a></td>
+          <td data-column="2">{{ player.task2_score_acc }}</td>
+          <td data-column="2">{{ player.task2_score_f1 }}</td>
+          <td data-column="3"><a href="{{ player.link }}">{{ player.task3_name }}</a></td>
+          <td data-column="3">{{ player.task3_score_mae }}</td>
+          <td data-column="3">{{ player.task3_score_rmse }}</td>
+          <td data-column="4"><a href="{{ player.link }}">{{ player.task4_name }}</a></td>
+          <td data-column="4">{{ player.task4_score_r1 }}</td>
+          <td data-column="4">{{ player.task4_score_rl }}</td>
+          <td data-column="5"><a href="{{ player.link }}">{{ player.task5_name }}</a></td>
+          <td data-column="5">{{ player.task5_score_r1 }}</td>
+          <td data-column="5">{{ player.task5_score_rl }}</td>
+          <td data-column="6"><a href="{{ player.link }}">{{ player.task6_name }}</a></td>
+          <td data-column="6">{{ player.task6_score_r1 }}</td>
+          <td data-column="6">{{ player.task6_score_rl }}</td>
+          <td data-column="7"><a href="{{ player.link }}">{{ player.task7_name }}</a></td>
+          <td data-column="7">{{ player.task7_score_r1 }}</td>
+          <td data-column="7">{{ player.task7_score_rl }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+</table>
+</div>
+<script>
+    function sortTable(columnIndex, dec) {
+      console.log(columnIndex)
+      const table = document.getElementById("leaderboard-table");
+      const tbody = table.tBodies[0];
+      const rows = Array.from(tbody.rows);
+  
+      const compareFunction = (rowA, rowB) => {
+        const cellA = rowA.cells[columnIndex].innerText;
+        const cellB = rowB.cells[columnIndex].innerText;
+        return !dec ? parseFloat(cellA) - parseFloat(cellB) : parseFloat(cellB) - parseFloat(cellA);
+      };
+  
+      const sorted = rows.sort(compareFunction);
+      let isAscending = true;
+      for (let i = 1; i < sorted.length; i++) {
+        if (compareFunction(sorted[i - 1], sorted[i]) > 0) {
+          isAscending = false;
+          break;
+        }
+      }
+  
+      const sortedRows = isAscending ? sorted.reverse() : sorted;
+  
+      // Append sorted rows to the table
+      sortedRows.forEach(row => tbody.appendChild(row));
+    }
+    function changeColumn() {
+      const selectedColumn = document.getElementById("column-select").value;
+      const allCells = document.querySelectorAll("td[data-column]");
+      const allCellsth = document.querySelectorAll("th[data-column]");
+
+      if (selectedColumn == "1"){
+        sortTable(1, false)
+      } else if (selectedColumn == "2"){
+        sortTable(3, false)
+      } else if (selectedColumn == "3"){
+        sortTable(6, true)
+      } else if (selectedColumn == "4"){ 
+        sortTable(9, false)
+      } else if (selectedColumn == "5"){
+        sortTable(12, false)
+      } else if (selectedColumn == "6"){
+        sortTable(15, false)
+      } else if (selectedColumn == "7"){
+        sortTable(18, false)
+      }
+
+      allCellsth.forEach((cell) => {
+        if (cell.getAttribute("data-column") === selectedColumn) {
+          cell.style.display = "table-cell";
+        } else {
+          cell.style.display = "none";
+        }
+      });
+
+      allCells.forEach((cell) => {
+        if (cell.getAttribute("data-column") === selectedColumn) {
+          cell.style.display = "table-cell";
+        } else {
+          cell.style.display = "none";
+        }
+      });
+    }
+    sortTable(1, false)
+  </script>
+  <style>
+    td[data-column] {
+      display: none;
+    }
+
+    th[data-column] {
+      display: none;
+    }
+
+    th[data-column="1"] {
+      display: table-cell;
+    }
+
+    td[data-column="1"] {
+      display: table-cell;
+    }
+  </style>
